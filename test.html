@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+
+
+<video
+    id="my-player"
+    class="video-js"
+    controls
+    preload="auto"
+    poster=""
+    data-setup='{}'>
+  <source src="output9_dashinit.mp4" type="video/mp4"></source>
+
+    </video>
+
+    <form method="post" action="#">  
+    <fieldset>  
+    <legend>Select Audio Tracks</legend>  
+    <input type="checkbox" value="a1" name="audio_tracks" onclick="" >A1<br>  
+    <input type="checkbox" value="a2" name="audio_tracks" onclick="" >A2<br>  
+    <input type="checkbox" value="a3" name="audio_tracks" onclick="" >A3<br>  
+    <input type="checkbox" value="a4" name="audio_tracks" onclick="" >A4<br>  
+    <input type="checkbox" value="a5" name="audio_tracks" onclick="" >A5<br>  
+    <input type="checkbox" value="a6" name="audio_tracks" onclick="" >A6<br>  
+    <input type="checkbox" value="a7" name="audio_tracks" onclick="" >A7<br>  
+    <input type="checkbox" value="a8" name="audio_tracks" onclick="" >A8<br>  
+    <input type="button" value="Apply audio tracks" onclick="return ValidateAudioTracks();">  
+    </fieldset>  
+    </form>  
+
+    <script>
+      
+      function ValidateAudioTracks()  
+      {  
+      
+        var video = document.getElementById("my-player");
+
+        if(video == null)
+        {
+            console.log("video control is null");
+        }
+        else
+        {
+
+            var checkboxes = document.getElementsByName("audio_tracks");  
+            var numberOfCheckedItems = 0;  
+            for(var i = 0; i < checkboxes.length; i++)  
+            {  
+                if(i >= video.audioTracks.length)
+                    break;
+
+                if(checkboxes[i].checked) 
+                {
+                    video.audioTracks[i].enabled = true;
+                } 
+                else
+                    video.audioTracks[i].enabled = false; 
+            }  
+            
+            
+        }
+        
+      }  
+
+    </script>
+  </body>
+</html>
